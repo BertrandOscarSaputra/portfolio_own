@@ -1,19 +1,30 @@
-import Galaxy from "./components/galaxy";
+"use client";
 
-export default function Home() {
+import Navbar from "./components/navbar";
+import Hero from "./components/hero";
+import About from "./components/about";
+import TechStack from "./components/techStack";
+import Projects from "./components/projects";
+import Footer from "./components/footer";
+import { motion } from "framer-motion";
+
+export default function HomePage() {
   return (
-    <div className="relative w-full h-screen overflow-hidden">
-      <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl z-10">
-        Welcome to My Portfolio
-      </h1>
-      <Galaxy
-        mouseRepulsion={true}
-        mouseInteraction={true}
-        density={1.5}
-        glowIntensity={0.5}
-        saturation={0.8}
-        hueShift={240}
-      />
-    </div>
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45 }}
+      className="bg-white text-gray-900 min-h-screen"
+    >
+      <Navbar />
+      <main className="max-w-7xl mx-auto px-6 lg:px-8">
+        <Hero />
+        <About />
+        <TechStack />
+        <Projects />
+      </main>
+
+      <Footer />
+    </motion.div>
   );
 }
